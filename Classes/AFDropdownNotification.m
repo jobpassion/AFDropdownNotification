@@ -101,11 +101,14 @@
             notificationHeight = 100;
         }
         
-        _notificationView.frame = CGRectMake(0, -notificationHeight, [[UIScreen mainScreen] bounds].size.width, notificationHeight);
+//        _notificationView.frame = CGRectMake(0, -notificationHeight, [[UIScreen mainScreen] bounds].size.width, notificationHeight);
+        _notificationView.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, notificationHeight);
         _notificationView.backgroundColor = [UIColor clearColor];
         
-        [[[UIApplication sharedApplication] keyWindow] addSubview:_notificationView];
-        [[[UIApplication sharedApplication] keyWindow] bringSubviewToFront:_notificationView];
+//        [[[UIApplication sharedApplication] keyWindow] addSubview:_notificationView];
+//        [[[UIApplication sharedApplication] keyWindow] bringSubviewToFront:_notificationView];
+        [view addSubview:_notificationView];
+        [view bringSubviewToFront:_notificationView];
         
         if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1) {
             UIVisualEffect *visualEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
@@ -163,7 +166,8 @@
         
         if (animation) {
             
-            _animator = [[UIDynamicAnimator alloc] initWithReferenceView:[[UIApplication sharedApplication] keyWindow]];
+//            _animator = [[UIDynamicAnimator alloc] initWithReferenceView:[[UIApplication sharedApplication] keyWindow]];
+            _animator = [[UIDynamicAnimator alloc] initWithReferenceView:view];
             
             UIGravityBehavior *gravity = [[UIGravityBehavior alloc] initWithItems:@[_notificationView]];
             [_animator addBehavior:gravity];
